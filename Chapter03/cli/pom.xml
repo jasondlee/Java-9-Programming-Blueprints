@@ -21,13 +21,12 @@
         <dependency>
             <groupId>org.tomitribe</groupId>
             <artifactId>tomitribe-crest</artifactId>
-            <version>${crest.version}</version>  
-                <exclusions> 
-                    <exclusion> 
-                        <groupId>junit</groupId>  
-                        <artifactId>junit</artifactId> 
-                    </exclusion> 
-                </exclusions> 
+            <exclusions> 
+                <exclusion> 
+                    <groupId>junit</groupId>  
+                    <artifactId>junit</artifactId> 
+                </exclusion> 
+            </exclusions> 
         </dependency>
     </dependencies>
 

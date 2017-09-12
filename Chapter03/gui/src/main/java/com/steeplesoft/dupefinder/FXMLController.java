@@ -152,7 +152,8 @@ public class FXMLController implements Initializable {
         if (selectedFiles.size() > 0) {
             showConfirmationDialog("Are you sure you want to delete the selected files",
                     () -> selectedFiles.forEach(f -> {
-                        if (Desktop.getDesktop().moveToTrash(new File(f.getPath()))) {
+//                        if (Desktop.getDesktop().moveToTrash(new File(f.getPath()))) {
+                        if (new File(f.getPath()).delete()) { // TODO multi-release jar
                             matchingFilesListView.getItems().remove(f);
                             dupes.get(dupeFileGroupListView.getSelectionModel().getSelectedItem())
                                     .remove(f);
@@ -204,7 +205,7 @@ public class FXMLController implements Initializable {
         File dir = dc.showDialog(null);
         if (dir != null) {
             try {
-                lastDir = dir.getParent();
+                lastDir = dir.getCanonicalPath(); //.getParent();
                 paths.add(dir.getCanonicalPath());
             } catch (IOException ex) {
                 Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);

@@ -52,18 +52,77 @@
         <module>gui</module>
     </modules>
 
-    
-    <build> 
-        <plugins> 
+    <build>
+        <plugins>
             <plugin> 
                 <groupId>org.apache.maven.plugins</groupId>  
                 <artifactId>maven-compiler-plugin</artifactId>  
-                <version>3.6-SNAPSHOT</version>
-                <configuration> 
-                    <source>1.9</source>  
-                    <target>1.9</target>  
-                </configuration> 
-            </plugin>
+                <version>3.6.1</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/module-info.java</exclude>
+                    </excludes>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin> 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>jdk9</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <jdk>9</jdk>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.6.1</version>
+                        <executions>
+                            <execution>
+                                <id>module-infos</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/module-info.java</include>
+                                    </includes>
+                                    <source>1.9</source>
+                                    <target>1.9</target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>add-source</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>add-source</goal>
+                                </goals>
+                                <configuration>
+                                    <sources>
+                                        <source>some directory</source>
+                                    </sources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

@@ -110,7 +110,8 @@ public class FileFinder {
 
     private void calculateHash(FileInfo file) {
         try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA3-256");
+            MessageDigest messageDigest = 
+                    MessageDigest.getInstance(isPreJava9() ? "SHA-256" : "SHA3-256");
             messageDigest.update(Files.readAllBytes(Paths.get(file.getPath())));
             ByteArrayInputStream inputStream = new ByteArrayInputStream(messageDigest.digest());
             String hash = IntStream.generate(inputStream::read)
@@ -126,6 +127,10 @@ public class FileFinder {
             // actually run, but it's probably best to be cautious here.
             throw new RuntimeException(ex);
         }
+    }
+
+    private static boolean isPreJava9() {
+        return System.getProperty("java.version").startsWith("1.");
     }
 
     private void coalesceDuplicates(FileInfo f) {
