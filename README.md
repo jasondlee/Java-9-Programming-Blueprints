@@ -2,6 +2,17 @@
 This is the code repository for [Java 9 Programming Blueprints](https://www.packtpub.com/application-development/java-9-programming-blueprints?utm_source=github&utm_medium=repository&utm_campaign=9781786460196), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the book from start to finish.
 ## About the Book
 Java is a powerful language that has applications in a wide variety of fields. Right from playing games on your computer to performing banking transactions, Java is at the heart of everything.
+## Project Table of Contents
+2. Managing Processes in Java
+3. Duplicate File Finder
+4. Date Calculator
+5. Sunago - A Social Media Aggregator
+6. Sunago - An Android Port
+7. Email and Spam Management with MailFilter
+8. Photo Management with PhotoBeans
+9. Taking Notes with Monumentum
+10. Serverless Java
+11. DeskDroid - A Desktop Client for Your Android Phone 
 ## Instructions and Navigation
 All of the code is organized into folders. Each folder starts with a number followed by the application name. For example, Chapter02.
 
